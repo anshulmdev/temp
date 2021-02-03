@@ -23,7 +23,7 @@ export default new Vuex.Store({
   state: {
     // App vital details
     app: {
-      name: 'OneUI Vue Edition',
+      name: 'Einfach Tech',
       version: process.env.PACKAGE_VERSION,
       copyright: helpers.getCurrentYear()
     },
