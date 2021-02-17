@@ -9,7 +9,7 @@
               Main Dashboard
             </h1>
             <h2 class="h6 font-w500 text-muted mb-0">
-              Welcome <a class="font-w600" href="javascript:void(0)">Adam</a>, everything looks great.
+              Welcome <a class="font-w600" href="javascript:void(0)">{{$store.state.firestoreData.name.split(' ')[0]}}</a>, everything looks great.
             </h2>
           </div>
           <div class="mt-3 mt-sm-0 ml-sm-3">
@@ -35,7 +35,7 @@
                 Applications
               </div>
               <div class="font-size-h3">
-                100
+                {{$store.state.firestoreData.applications.total}}
               </div>
             </div>
             <div class="d-flex ml-2">
@@ -50,7 +50,7 @@
                 Invited
               </div>
               <div class="font-size-h3">
-                78
+                {{$store.state.firestoreData.applications.invite}}
               </div>
             </div>
             <div class="d-flex ml-2">
@@ -65,7 +65,7 @@
                 Test Conducted
               </div>
               <div class="font-size-h3">
-                23
+                {{$store.state.firestoreData.applications.test}}
               </div>
             </div>
             <div class="d-flex ml-2">
@@ -80,7 +80,7 @@
                 Shortlisted
               </div>
               <div class="font-size-h3">
-                3
+                {{$store.state.firestoreData.applications.shortlist}}
               </div>
             </div>
             <div class="d-flex ml-2">

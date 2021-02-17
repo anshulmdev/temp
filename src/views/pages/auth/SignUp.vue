@@ -379,9 +379,10 @@ export default {
       const data = this.form
       const logo = this.imagesUrl
       firebase.firestore().collection("accounts").doc(data.username)
-          .set({uid, name: data.companyName, website: data.companyWebsite, email: data.email, logo})
+          .set({uid, name: data.companyName, website: data.companyWebsite, email: data.email, logo, applications: {inbox: 0, invite: 0, notification: 0, shortlist:0, test:0, total:0}})
           .then(() => {
               this.loading = false;
+              this.$store.commit('setAuth', uid)
       this.$router.push('/backend/dashboard')
           })
           .catch((error) => {

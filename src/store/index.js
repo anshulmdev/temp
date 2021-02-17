@@ -4,6 +4,7 @@
 
 import Vue from 'vue'
 import Vuex from 'vuex'
+import firebase from "../firebase";
 
 // Register Vuex
 Vue.use(Vuex)
@@ -21,6 +22,8 @@ const helpers = {
 // Vuex Store
 export default new Vuex.Store({
   state: {
+    authUid: 'xx',
+    firestoreData: null,
     // App vital details
     app: {
       name: 'Einfach Tech',
@@ -77,6 +80,15 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+
+    //auth
+    async setAuth (state,payload){
+      state.authUid = payload
+      const query = await firebase.firestore().collection('accounts').where('uid', '==', payload).get();
+      query.forEach(doc => {
+        state.firestoreData = doc.data()
+      });
+    },
     // Sets the layout, useful for setting different layouts (under layouts/variations/) 
     setLayout (state, payload) {
       state.layout.header = payload.header

@@ -110,25 +110,25 @@
           <b-dropdown size="sm" variant="dual" class="d-inline-block ml-2" menu-class="p-0 border-0 dropdown-menu-md" right no-caret ref="oneDropdownDefaultUser">
             <template #button-content>
               <div class="d-flex align-items-center">
-                <img class="rounded-circle" src="img/avatars/avatar10.jpg" alt="Header Avatar" style="width: 21px;">
-                <span class="d-none d-sm-inline-block ml-2">Adam</span>
+                <img class="rounded-circle" :src="$store.state.firestoreData.logo" alt="Header Avatar" style="width: 21px;">
+                <span class="d-none d-sm-inline-block ml-2">{{$store.state.firestoreData.name.split(' ')[0]}}</span>
                 <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block ml-1 mt-1"></i>
               </div>
             </template>
             <li @click="$refs.oneDropdownDefaultUser.hide(true)">
               <div class="p-3 text-center bg-primary-dark rounded-top">
-                <img class="img-avatar img-avatar48 img-avatar-thumb" src="img/avatars/avatar10.jpg" alt="Avatar">
-                <p class="mt-2 mb-0 text-white font-w500">Adam Smith</p>
-                <p class="mb-0 text-white-50 font-size-sm">Web Developer</p>
+                <img class="img-avatar img-avatar48 img-avatar-thumb" :src="$store.state.firestoreData.logo" alt="Avatar">
+                <p class="mt-2 mb-0 text-white font-w500">{{$store.state.firestoreData.name}}</p>
+                <p class="mb-0 text-white-50 font-size-sm">{{$store.state.firestoreData.email}}</p>
               </div>
               <div class="p-2">
                 <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
                   <span class="font-size-sm font-w500">Inbox</span>
-                  <span class="badge badge-pill badge-primary ml-2">3</span>
+                  <span class="badge badge-pill badge-primary ml-2">{{$store.state.firestoreData.applications.inbox}}</span>
                 </a>
                 <router-link class="dropdown-item d-flex align-items-center justify-content-between" to="/backend/pages/generic/profile">
                   <span class="font-size-sm font-w500">Profile</span>
-                  <span class="badge badge-pill badge-primary ml-2">1</span>
+                  <span class="badge badge-pill badge-primary ml-2">{{$store.state.firestoreData.applications.notification}}</span>
                 </router-link>
                 <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
                   <span class="font-size-sm font-w500">Settings</span>
