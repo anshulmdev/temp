@@ -149,14 +149,14 @@
           <b-dropdown size="sm" variant="dual" class="d-inline-block ml-2" menu-class="dropdown-menu-lg p-0 border-0 font-size-sm" right no-caret>
             <template #button-content>
               <i class="fa fa-fw fa-bell"></i>
-              <span v-if="notifications.length" class="text-primary">•</span>
+              <span v-if="$store.state.firestoreData.notifications.length" class="text-primary">•</span>
             </template>
             <li>
               <div class="p-2 bg-primary-dark text-center rounded-top">
                   <h5 class="dropdown-header text-uppercase text-white">Notifications</h5>
               </div>
               <ul class="nav-items mb-0">
-                <li v-for="(notification, index) in notifications" :key="`notification-${index}`">
+                <li v-for="(notification, index) in $store.state.firestoreData.notifications" :key="`notification-${index}`">
                   <a class="text-dark media py-2" :href="`${notification.href}`">
                     <div class="mr-2 ml-3">
                       <i :class="`${notification.icon}`"></i>
@@ -167,7 +167,7 @@
                     </div>
                   </a>
                 </li>
-                <li v-if="!notifications.length" class="p-2">
+                <li v-if="!$store.state.firestoreData.notifications.length" class="p-2">
                   <b-alert variant="warning" class="text-center m-0" show>
                     <p class="mb-0">
                       No new notifications!
@@ -175,7 +175,7 @@
                   </b-alert>
                 </li>
               </ul>
-              <div v-if="notifications.length" class="p-2 border-top">
+              <div v-if="$store.state.firestoreData.notifications" class="p-2 border-top">
                 <b-button size="sm" variant="light" class="text-center" block href="javascript:void(0)">
                   <i class="fa fa-fw fa-arrow-down mr-1"></i> Load More..
                 </b-button>
@@ -233,45 +233,7 @@ export default {
   },
   data () {
     return {
-      baseSearchTerm: '',
-      notifications: [
-        {
-          href: 'javascript:void(0)',
-          icon: 'fa fa-fw fa-check-circle text-success',
-          title: 'You have a new follower',
-          time: '15 min ago'
-        },
-        {
-          href: 'javascript:void(0)',
-          icon: 'fa fa-fw fa-plus-circle text-primary',
-          title: '1 new sale, keep it up',
-          time: '22 min ago'
-        },
-        {
-          href: 'javascript:void(0)',
-          icon: 'fa fa-fw fa-times-circle text-danger',
-          title: 'Update failed, restart server',
-          time: '26 min ago'
-        },
-        {
-          href: 'javascript:void(0)',
-          icon: 'fa fa-fw fa-plus-circle text-primary',
-          title: '2 new sales, keep it up',
-          time: '33 min ago'
-        },
-        {
-          href: 'javascript:void(0)',
-          icon: 'fa fa-fw fa-user-plus text-success',
-          title: 'You have a new subscriber',
-          time: '41 min ago'
-        },
-        {
-          href: 'javascript:void(0)',
-          icon: 'fa fa-fw fa-check-circle text-success',
-          title: 'You have a new follower',
-          time: '42 min ago'
-        }
-      ]
+      baseSearchTerm: ''
     }
   },
   methods: {

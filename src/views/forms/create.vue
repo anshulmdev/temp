@@ -48,6 +48,7 @@
 
       <!-- Inline -->
       <base-block rounded title="Add Fields">
+               {{ form }}
         <b-row>
           <b-col lg="4">
             <p class="font-size-sm text-muted mb-2">
@@ -87,7 +88,7 @@
           </b-col>
           <b-col lg="6">
               
-              <b-button class="ml-6" type="submit" variant="primary" @click="addField(form.name,form.value)">{{form.fields[form.fields.length-1].submit}}</b-button>
+              <b-button class="ml-6" type="submit" variant="primary" @click="addField(form.name,form.type)">{{form.fields[form.fields.length-1].submit}}</b-button>
               </b-col></b-row></b-col>
         </b-row>
       </base-block>
@@ -151,7 +152,7 @@
           </b-row>
             <base-block rounded title="Submit final form" header-bg>
               <template #options>
-                <b-button type="submit" class="px-4" size="md" variant="primary">
+                <b-button type="submit" class="px-4" size="md" variant="primary" @click="submitForm">
                   Submit
                 </b-button>
                 <b-button type="reset" class="px-4" size="md" variant="alt-primary">
@@ -210,9 +211,18 @@ export default {
     };
   },
   methods: {
+    submitForm (){
+       firebase.database().ref('forms/' + this.$store.state.authUid).set({
+    title: this.title,
+    desc: this.desc,
+    test: this.options[this.selected],
+    fields: this.form.fields
+  });
+    },
     addField (name,type){
+      if(name != 'Field Name'){
       this.form.fields[this.form.fields.length-1] = {name,type,submit:'Added'}
-      this.form.fields.push({name:'Field Name',type:'Field Type',submit:'Add More'})
+      this.form.fields.push({name:'Field Name',type:'Field Type',submit:'Add More'})}
     },
     async afterComplete(upload) {
       console.log('running')
