@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="$store.state.firestoreData">
     <!-- Hero -->
     <div class="bg-body-light">
       <div class="content content-full">

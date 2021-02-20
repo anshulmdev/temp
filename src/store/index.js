@@ -22,7 +22,7 @@ const helpers = {
 // Vuex Store
 export default new Vuex.Store({
   state: {
-    authUid: 'xx',
+    authUid: '2jfmeB9gjKcy7cMA4sthOKDvOOB2',
     firestoreData: null,
     // App vital details
     app: {
@@ -79,15 +79,23 @@ export default new Vuex.Store({
       return state.settings.colorTheme
     }
   },
+  actions: {
+    getFirestoreData () {
+        const query = firebase.firestore().collection('accounts').where('uid', '==', this.state.authUid)
+        const observer = query.onSnapshot(querySnapshot => {
+          querySnapshot.docChanges().forEach(change => {
+            this.state.firestoreData = change.doc.data()
+          })}, err => {
+          console.log(`Encountered error: ${err}`);
+        });
+        console.log(observer)}
+  },
   mutations: {
 
     //auth
     async setAuth (state,payload){
       state.authUid = payload
-      const query = await firebase.firestore().collection('accounts').where('uid', '==', payload).get();
-      query.forEach(doc => {
-        state.firestoreData = doc.data()
-      });
+      this.dispatch('getFirestoreData')
     },
     // Sets the layout, useful for setting different layouts (under layouts/variations/) 
     setLayout (state, payload) {

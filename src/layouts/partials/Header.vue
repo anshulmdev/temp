@@ -1,6 +1,6 @@
 <template>
   <!-- Header -->
-  <header id="page-header">
+  <header v-if="$store.state.firestoreData" id="page-header">
     <slot>
       <!-- Header Content -->
       <div class="content-header">
@@ -163,7 +163,7 @@
                     </div>
                     <div class="media-body pr-2">
                       <div class="font-w600">{{ notification.title }}</div>
-                      <span class="font-w500 text-muted">{{ notification.time }}</span>
+                      <span class="font-w500 text-muted">{{ Date(notification.time).toString().slice(0,10) }}</span>
                     </div>
                   </a>
                 </li>
