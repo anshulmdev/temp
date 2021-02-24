@@ -84,7 +84,6 @@
                 </div>
               </div>
               <div class="block-content font-size-sm">
-                <VueDocPreview height="70" value="newteach.pbworks.com%2Ff%2Fele%2Bnewsletter.docx" type="office" />
               </div>
               <div class="block-content block-content-full text-right border-top">
                 <b-button variant="alt-primary" class="mr-1" @click="$bvModal.hide('modal-block-extra-large')">Close</b-button>
@@ -100,10 +99,8 @@
 </template>
 
 <script>
-import VueDocPreview from 'vue-doc-preview'
 export default {
   components: {
-    VueDocPreview
   },
   data () {
     return {

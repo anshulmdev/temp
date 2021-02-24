@@ -48,7 +48,6 @@
 
       <!-- Inline -->
       <base-block rounded title="Add Fields">
-               {{ form }}
         <b-row>
           <b-col lg="4">
             <p class="font-size-sm text-muted mb-2">

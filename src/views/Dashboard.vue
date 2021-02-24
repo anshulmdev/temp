@@ -35,7 +35,7 @@
                 Applications
               </div>
               <div class="font-size-h3">
-                {{$store.state.firestoreData.applications.total}}
+                {{$store.state.firestoreData.candidates.applied.length}}
               </div>
             </div>
             <div class="d-flex ml-2">
