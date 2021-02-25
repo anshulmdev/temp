@@ -106,9 +106,9 @@ export default {
           to: '/backend/applicants/Invited'
         },
         {
-          name: 'Ongoing',
+          name: 'Completed',
           icon: 'si si-feed',
-          to: '/backend/applicants/Ongoing'
+          to: '/backend/applicants/Completed'
         },
       ]
     },

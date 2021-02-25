@@ -34,10 +34,10 @@
             </b-tr>
           </b-thead>
           <b-tbody>
-            <b-tr v-for="user in users" :key="user.id">
+            <b-tr v-for="user in $store.state.firestoreData.candidates.invited" :key="user.name">
               <b-td class="text-center">
-                <a v-b-modal.modal-block-extra-large>
-                <img height="50" :src="user.avatar" alt="Avatar"></a>
+                <a v-b-modal.modal-block-extra-large @click="url=user.resume">
+                <img height="50" src="https://static.thenounproject.com/png/543772-200.png" alt="Avatar"></a>
               </b-td>
               <b-td class="font-w600 font-size-sm">
                 <a :href="`${user.href}`">
@@ -45,16 +45,16 @@
                 </a>
               </b-td>
               <b-td class="font-size-sm">
-                client{{ user.id }}<em class="text-muted">@example.com</em>
+                {{user.email}}
               </b-td>
               <b-td>
-                <b-row v-for="(value,index) in user.labelVariant" :key="index">
+                <b-row v-for="(value,index) in user.tags" :key="index">
                   <b-col class="col-lg-4">
                 <b-badge :variant="index">{{ value }}</b-badge></b-col>
                 </b-row>
               </b-td>
               <b-td class="font-size-sm">
-                {{ user.exp }} Yrs
+                {{ user.experience }} Yrs
               </b-td>
               <b-td class="text-center">
                 <b-btn-group>
@@ -84,10 +84,12 @@
                 </div>
               </div>
               <div class="block-content font-size-sm">
-              </div>
+  <iframe :src="url" width="100%" height="600">
+</iframe>
+</div>
               <div class="block-content block-content-full text-right border-top">
-                <b-button variant="alt-primary" class="mr-1" @click="$bvModal.hide('modal-block-extra-large')">Close</b-button>
-                <b-button variant="primary" @click="$bvModal.hide('modal-block-extra-large')">Ok</b-button>
+                <b-button variant="alt-success" class="mr-1" @click="$bvModal.hide('modal-block-extra-large')">Close</b-button>
+                <b-button variant="success" @click="$bvModal.hide('modal-block-extra-large')">Ok</b-button>
               </div>
             </div>
           </b-modal>
@@ -100,53 +102,14 @@
 
 <script>
 export default {
-  components: {
-  },
   data () {
     return {
-      users: [
-        {
-          id: 0,
-          name: 'Adam McCoy',
-          avatar: 'https://cdn.iconscout.com/icon/free/png-256/resume-1956282-1650445.png',
-          href: 'javascript:void(0)',
-          labelVariant: {'warning':'javascript'},
-          exp:10,
-        },
-        {
-          id: 1,
-          name: 'Neo McCoy',
-          avatar: 'https://cdn.iconscout.com/icon/free/png-256/resume-1956282-1650445.png',
-          href: 'javascript:void(0)',
-          labelVariant: {'info':'React'},
-          exp:10,
-        },
-        {
-          id: 2,
-          name: 'Eve McCoy',
-          avatar: 'https://cdn.iconscout.com/icon/free/png-256/resume-1956282-1650445.png',
-          href: 'javascript:void(0)',
-          labelVariant: {'success': 'vuejs'},
-          exp:10,
-        },
-        {
-          id: 3,
-          name: 'Adam McCoy',
-          avatar: 'https://static.thenounproject.com/png/543772-200.png',
-          href: 'javascript:void(0)',
-          labelVariant: {'warning':'javascript'},
-          exp:10,
-        },
-        {
-          id: 4,
-          name: 'Adam McCoy',
-          avatar: 'https://static.thenounproject.com/png/543772-200.png',
-          href: 'javascript:void(0)',
-          labelVariant: {'danger': 'angular'},
-          exp:10,
-        },
-      ]
+      rows: this.$store.state.firebaseData.candidates.invited.length,
+      perPage: 10,
+      currentPage: 1,
+      url: "https://static.thenounproject.com/png/543772-200.png",
     }
   }
 }
 </script>
+

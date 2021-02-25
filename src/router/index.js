@@ -68,7 +68,7 @@ const FormsValidation = () => import(/* webpackChunkName: "forms-validation" */"
 // Backend: Applicants
 const ApplicantsApplied = () => import("@/views/applicants/Applied.vue")
 const ApplicantsInvited = () => import("@/views/applicants/Invited.vue")
-const ApplicantsOngoing = () => import("@/views/applicants/Ongoing.vue")
+const ApplicantsCompleted = () => import("@/views/applicants/Completed.vue")
 
 // Backend: Library
 const LibraryRegex = () => import("@/views/library/Regex.vue")
@@ -525,9 +525,9 @@ export default new Router({
               component: ApplicantsInvited
             },
             {
-              path: 'ongoing',
-              name: 'Applicants Ongoing',
-              component: ApplicantsOngoing
+              path: 'Completed',
+              name: 'Applicants Completed',
+              component: ApplicantsCompleted
             },
           ]
         },
