@@ -118,6 +118,11 @@ export default {
       subActivePaths: '/backend/inbox',
       sub: [
         {
+          name: 'Invited',
+          icon: 'si si-clock',
+          to: '/backend/inbox/invited'
+        },
+        {
           name: 'Shortlisted',
           icon: 'si si-check',
           to: '/backend/inbox/shortlisted'
@@ -126,11 +131,6 @@ export default {
           name: 'Rejected',
           icon: 'si si-close',
           to: '/backend/inbox/rejected'
-        },
-        {
-          name: 'Waiting',
-          icon: 'si si-clock',
-          to: '/backend/inbox/waiting'
         },
       ]
     },

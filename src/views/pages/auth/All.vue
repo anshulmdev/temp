@@ -108,7 +108,7 @@
         </div>
         <div class="col-md-6">
           <!-- Lock Screen -->
-          <router-link to="/auth/lock2" v-slot="{ href, navigate }" >
+          <router-link to="/auth/checkInvitation" v-slot="{ href, navigate }" >
             <base-block tag="a" content-class="text-center" rounded link-shadow :href="href" @click="navigate">
               <div class="py-5">
                 <div class="mb-3">

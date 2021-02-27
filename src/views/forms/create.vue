@@ -149,7 +149,7 @@
             </section>
             </b-col>
           </b-row>
-            <base-block rounded title="Submit final form" header-bg>
+            <base-block v-if="formUrl == null" rounded title="Submit final form" header-bg>
               <template #options>
                 <b-button type="submit" class="px-4" size="md" variant="primary" @click="submitForm">
                   Submit
@@ -158,6 +158,12 @@
                   Reset
                 </b-button>
               </template>
+              </base-block>
+            <base-block v-if="formUrl" rounded title="Generated Form Url" header-bg>
+            <template #options>
+                <a>{{formUrl}}</a>
+              </template>
+
               </base-block>
              </b-tab>
           </b-tabs>
@@ -186,6 +192,7 @@ export default {
       title: '',
       desc:'',
       selected: null,
+      formUrl: null,
       options: [
         { value: null, text: 'Please select' },
         { value: 1, text: 'JavaScript' },
@@ -215,7 +222,11 @@ export default {
     title: this.title,
     desc: this.desc,
     test: this.options[this.selected],
-    fields: this.form.fields
+    fields: this.form.fields,
+    logo: this.imagesUrl
+  }).then((e) => {
+    this.formUrl = `http://localhost:8080/#/auth/applications/${this.$store.state.authUid}`
+    console.log(e)
   });
     },
     addField (name,type){

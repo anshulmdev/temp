@@ -94,7 +94,7 @@ const SubscriptionPayment = () => import("@/views/subscription/Payment.vue")
 // Backend: Inbox
 const InboxShortlisted = () => import("@/views/inbox/Shortlisted.vue")
 const InboxRejected = () => import("@/views/inbox/Rejected.vue")
-const InboxWaiting = () => import("@/views/inbox/Waiting.vue")
+const InboxInvited = () => import("@/views/inbox/Invited.vue")
 
 // Backend: Support
 const SupportTicket = () => import("@/views/support/Ticket.vue")
@@ -157,7 +157,7 @@ const AuthSignIn2 = () => import(/* webpackChunkName: "auth-signin2" */"@/views/
 const AuthSignUp = () => import(/* webpackChunkName: "auth-signup" */"@/views/pages/auth/SignUp.vue")
 const AuthSignUp2 = () => import(/* webpackChunkName: "auth-signup2" */"@/views/pages/auth/SignUp2.vue")
 const AuthLock = () => import(/* webpackChunkName: "auth-lock" */"@/views/pages/auth/Lock.vue")
-const AuthLock2 = () => import(/* webpackChunkName: "auth-lock2" */"@/views/pages/auth/Lock2.vue")
+const AuthApplications = () => import(/* webpackChunkName: "auth-Applications" */"@/views/pages/auth/Applications.vue")
 const AuthReminder = () => import(/* webpackChunkName: "auth-reminder" */"@/views/pages/auth/Reminder.vue")
 const AuthReminder2 = () => import(/* webpackChunkName: "auth-reminder2" */"@/views/pages/auth/Reminder2.vue")
 
@@ -241,9 +241,10 @@ export default new Router({
           component: AuthLock
         },
         {
-          path: 'lock2',
-          name: 'Auth Lock 2',
-          component: AuthLock2
+          path: 'Applications/:id',
+          name: 'Applications',
+          props: true,
+          component: AuthApplications
         },
         {
           path: 'reminder',
@@ -549,9 +550,9 @@ export default new Router({
               component: InboxRejected
             },
             {
-              path: 'waiting',
-              name: 'Inbox Waiting',
-              component: InboxWaiting
+              path: 'Invited',
+              name: 'Inbox Invited',
+              component: InboxInvited
             },
           ]
         },
